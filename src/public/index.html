@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Covid Brasil API</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="title">Covid19 Brasil API</h1>
+        <a href="#"> <i class="fab fa-github"></i> </a>
+      </header>
+      <div class="container">
+        <p>
+          Api desenvolvida para facilitar a utilização dos dados da covid 19 no
+          Brasil.
+        </p>
+
+        <div class="content">
+          <h3>Endpoints</h3>
+          <hr />
+          <div class="endpoint">
+            <p>GET - https://localhost:3333/casos</p>
+            <p class="message">Retorna todos os casos de covid no Brasil.</p>
+          </div>
+          <div class="endpoint">
+            <p>GET - https://localhost:3333/casos/{data}</p>
+            <p class="message">
+              Retorna todos os casos de covid na data especificada.
+            </p>
+            <p style="margin-top: 8px;"><strong>Exemplo</strong>: https://localhost:3333/casos/2020-03-27</p>
+          </div>
+          <div class="endpoint">
+            <p>GET - https://localhost:3333/{UF do estado}</p>
+            <p class="message">
+              Retorna todos os casos de covid no estado especificado.
+            </p>
+            <p style="margin-top: 8px;"><strong>Exemplo</strong>: https://localhost:3333/df</p>
+          </div>
+          <div class="endpoint">
+            <p>GET - https://localhost:3333/{UF do estado}/{data}</p>
+            <p class="message">
+              Retorna todos os casos de covid no estado e na data especificado.
+            </p>
+            <p style="margin-top: 8px;"><strong>Exemplo</strong>: https://localhost:3333/df/2020-03-27</p>
+          </div>
+          <h3>Parâmetros</h3>
+          <hr>
+          <div class="parametros">
+            <div class="parametro">
+              <p style="margin-bottom: 15px;">
+                <strong>UF do estado: </strong> Utilize a sigla da <a target="_blank" href="https://www.significados.com.br/uf/">unidade da federação</a> para retornar os dados do estado.
+              </p>
+              <strong>Possíveis erros:</strong>
+              <div class="error">
+                <h4>UF especificada não possui dois caracteres.</p>
+                <div class="snip">
+                  <div class="status_code">
+                    <p>400 Bad Request</p>
+                  </div>
+                  <div class="message">
+                    <p>
+                      { <strong>"message"</strong> :
+                      <span>"Tamanho da UF inválido."</span> }
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="error">
+                <h4>UF especificada não existe.</p>
+                <div class="snip">
+                  <div class="status_code">
+                    <p>400 Bad Request</p>
+                  </div>
+                  <div class="message">
+                    <p>
+                      { <strong>"message"</strong> :
+                      <span>"UF inexistente."</span> }
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="parametro">
+              <p style="margin-bottom: 15px;">
+                <strong>Data: </strong> Para as requisições que necessitem de data utilize o formato 'YYYY-MM-DD' e insira as datas a partir de 2020-02-26 (primeiro caso de covid no Brasil).
+              </p>
+              <strong>Possíveis erros:</strong>
+              <div class="error">
+                <h4>Data não encontrada ou fora do formato YYYY-MM-DD</p>
+                <div class="snip">
+                  <div class="status_code">
+                    <p>400 Bad Request</p>
+                  </div>
+                  <div class="message">
+                    <p>
+                      { <strong>"message"</strong> :
+                      <span>"Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD' "</span> }
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  </body>
+</html>

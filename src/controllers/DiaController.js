@@ -123,7 +123,7 @@ module.exports = {
       const casosOnDate = await Dia.find({ data: date }, {_id: 0, "estados._id": 0, "__v":0});
 
       if (casosOnDate.length === 0) {
-        const error = errorHandler("Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD'");
+        const error = errorHandler(" Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD' ");
         return next(error);
       }
 
