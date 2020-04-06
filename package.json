@@ -9,11 +9,11 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
-    "moment": "^2.24.0",
     "mongoose": "^5.9.6"
   },
   "scripts": {
-    "start": "nodemon src/app.js"
+    "start": "nodemon src/app.js",
+    "deploy": "node src/app.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
