@@ -1,6 +1,5 @@
 const Dia = require("../models/Dia");
 const errorHandler = require("../utils/errorHandler");
-const dateFormat = /([2]\d{3}-(0[2-4]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
 
 const ufs = [
   "AC",
@@ -35,7 +34,12 @@ module.exports = {
   // Função que retorna todos os casos e todos os dias
   async getAll(req, res, next) {
     try {
-      const casos = await Dia.find(null, {_id: 0, "casos._id": 0, "estados._id": 0, "__v":0});
+      const casos = await Dia.find(null, {
+        _id: 0,
+        "casos._id": 0,
+        "estados._id": 0,
+        __v: 0,
+      });
       const [total] = await Dia.aggregate([
         { $match: {} },
         {
@@ -120,10 +124,15 @@ module.exports = {
     const { date } = req.params;
 
     try {
-      const casosOnDate = await Dia.find({ data: date }, {_id: 0, "estados._id": 0, "__v":0});
+      const casosOnDate = await Dia.find(
+        { data: date },
+        { _id: 0, "estados._id": 0, __v: 0 }
+      );
 
       if (casosOnDate.length === 0) {
-        const error = errorHandler(" Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD' ");
+        const error = errorHandler(
+          " Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD' "
+        );
         return next(error);
       }
 
@@ -152,10 +161,12 @@ module.exports = {
     }
 
     try {
-      const casosData = await Dia.find({ data: date }, {_id: 0});
+      const casosData = await Dia.find({ data: date }, { _id: 0 });
 
       if (casosData.length === 0) {
-        const error = errorHandler("Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD'");
+        const error = errorHandler(
+          "Data não encontrada. Utilize datas a partir de 2020-02-26 e o formato 'YYYY-MM-DD'"
+        );
         return next(error);
       }
       const casosEstado = [];

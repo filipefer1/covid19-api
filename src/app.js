@@ -1,14 +1,21 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
-require('dotenv').config()
+const helmet = require("helmet");
+const cors = require("cors")
 
-const routes = require("./routes");
+const getRoutes = require("./routes/getCasos");
+const postRoutes = require("./routes/postDia");
 
 const app = express();
 
 app.use('/', express.static(__dirname + '/public'));
+ 
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
-app.use(routes);
+app.use(getRoutes);
+app.use(postRoutes);
 
 app.use((error, req, res, next) => {
   const status = error.statusCode || 500;
@@ -24,7 +31,7 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 ).then(() => {
-  app.listen(3333);
+  app.listen(process.env.PORT || 3333);
 }).catch(err => {
   return err;
 });

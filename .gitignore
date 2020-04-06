@@ -1,2 +1,4 @@
-yarn.lock
 node_modules
+.env
+rotas.txt
+src/routes/postDia.js
