@@ -6,7 +6,7 @@ const routes = express.Router();
 
 routes.post("/dia", DiaController.create);
 routes.get("/", (req, res) => {
-  return res.render("index.html")
+  return res.sendFile("index.html")
 })
 routes.get("/casos", DiaController.getAll);
 routes.get("/casos/:date", DiaController.getAllStatesOnDate);
