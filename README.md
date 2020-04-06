@@ -4,7 +4,7 @@ Uma api para que desenvolvedores possam utilizar os dados referentes à covid 19
 
 ## Endpoints
 
-> GET - http://localhost:3333/casos 
+> GET - https://covid-api-brasil.herokuapp.com/casos 
 
 Retorna todos os casos de covid 19 no Brasil.
 
@@ -27,11 +27,11 @@ Comentários:
 ```
 #
 
-> GET - http://localhost:3333/casos/{data} 
+> GET - https://covid-api-brasil.herokuapp.com/casos/{data} 
 
 Retorna todos os casos de covid 19 no Brasil na data especificada. OBS: Formato da data: YYYY-MM-DD.
 
-__Exemplo__: http://localhost:3333/casos/2020-03-30
+__Exemplo__: https://covid-api-brasil.herokuapp.com/casos/2020-03-30
 
 Resposta: 
 
@@ -65,11 +65,11 @@ Comentários:
 "mortes": Quantidade de mortes confirmadas na uf.
 ```
 #
-> GET - http://localhost:3333/ { uf do estado } 
+> GET - https://covid-api-brasil.herokuapp.com/ { uf do estado } 
 
 Retorna todos os casos de covid 19 no estado informado.
 
-__Exemplo__: http://localhost:3333/df
+__Exemplo__: https://covid-api-brasil.herokuapp.com/df
 
 Resposta: 
 
@@ -101,11 +101,11 @@ Comentários:
 ```
 
 #
-> GET - http://localhost:3333/ { uf do estado } / {data}
+> GET - https://covid-api-brasil.herokuapp.com/ { uf do estado } / {data}
 
 Retorna todos os casos de covid 19 no estado e na data informado.
 
-__Exemplo__: http://localhost:3333/df/2020-03-27
+__Exemplo__: https://covid-api-brasil.herokuapp.com/df/2020-03-27
 
 Resposta: 
 
