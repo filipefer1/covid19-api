@@ -5,7 +5,7 @@ const helmet = require("helmet");
 const cors = require("cors")
 
 const getRoutes = require("./routes/getCasos");
-const postRoutes = require("./routes/postDia");
+
 
 const app = express();
 
@@ -15,7 +15,11 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(getRoutes);
-app.use(postRoutes);
+
+if (!process.env.PORT) {
+  const postRoutes = require("./routes/postDia");
+  app.use(postRoutes); 
+}
 
 app.use((error, req, res, next) => {
   const status = error.statusCode || 500;
