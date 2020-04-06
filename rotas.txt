@@ -1,8 +1,0 @@
-rotas: 
-
-MAIS OU MENOS OK - covid19-api-brasil/casos => (retorno o total de casos e número de mortos?) retorna todos os casos de todos os dias e de todos os estado.
-OK -covid19-api-brasil/casos?data=2020-02-26 => retorna os casos de todos os estados na data 26/02/2020
-OK - covid19-api-brasil/sp => retorna todos os casos de São Paulo por dia.
-covid19-api-brasil/sp?data=2020-02-26 => retorna o caso do dia (número de casos e mortes ) do estado de São Paulo.
-
-***Tratar busca por um estado em uma data sem caso.
