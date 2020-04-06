@@ -5,7 +5,7 @@ const helmet = require("helmet");
 const cors = require("cors")
 
 const getRoutes = require("./routes/getCasos");
-
+const faviconHandler = require('./utils/faviconHandler');
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(faviconHandler);
 app.use(getRoutes);
 
 if (!process.env.PORT) {
