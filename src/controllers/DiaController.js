@@ -1,6 +1,8 @@
 const Dia = require("../models/Dia");
 const errorHandler = require("../utils/errorHandler");
 
+const { fetchStatesData, fetchCountryData } = require("../utils/fetchData");
+
 const ufs = [
   "AC",
   "AL",
@@ -192,17 +194,17 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { data, casos, mortes, estados } = req.body;
-
-    const dia = new Dia({
-      data,
-      casos,
-      mortes,
-      estados,
+    const countryData = await fetchCountryData();
+    const statesData = await fetchStatesData();
+    const newDay = new Dia({
+      data: countryData.data,
+      casos: countryData.casos,
+      mortes: countryData.mortes,
+      estados: statesData,
     });
 
-    const diaS = await dia.save();
+    const newDayResponse = await newDay.save();
 
-    res.json(diaS);
+    res.json(newDayResponse);
   },
 };
